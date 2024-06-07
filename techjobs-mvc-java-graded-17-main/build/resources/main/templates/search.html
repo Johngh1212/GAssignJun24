@@ -1,0 +1,127 @@
+<!--<!DOCTYPE html>-->
+<!--<html xmlns:th="http://www.thymeleaf.org/">-->
+<!--<head th:replace="~{fragments :: head}">-->
+<!--</head>-->
+<!--<body>-->
+
+<!--<div th:replace="~{fragments :: page-header}"></div>-->
+
+<!--<div class="container body-content">-->
+
+<!--  <h1 th:text="${#strings.capitalizeWords(title)}"></h1>-->
+
+<!--  <form th:action="@{/search/results}" method = "post">-->
+<!--    <h2>Search by:</h2>-->
+
+<!--    <p>-->
+<!--            <span th:each="column : ${columns}">-->
+<!--                <input-->
+<!--                        type="radio"-->
+<!--                        name="searchType"-->
+<!--                        th:id="${column.key}"-->
+<!--                        th:value="${column.key}"-->
+<!--                        th:checked="${column.key == 'all'}"/>-->
+<!--                <label th:for="${column.key}" th:text="${column.value}"></label>-->
+<!--            </span>-->
+
+<!--    </p>-->
+
+<!--    <p>-->
+<!--      <label for="searchTerm">Keyword:</label>-->
+<!--      <input type="text" name="searchTerm" id="searchTerm" />-->
+<!--    </p>-->
+
+<!--    <input type="submit" value="Search" />-->
+<!--  </form>-->
+
+<!--  <hr />-->
+
+<!--  &lt;!&ndash; TODO #4 - Loop over the search results to display all job fields. &ndash;&gt;-->
+
+<!--</div>-->
+
+<!--</body>-->
+<!--</html>-->
+
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="~{fragments :: head}">
+</head>
+<body>
+
+<div th:replace="~{fragments :: page-header}"></div>
+
+<div class="container body-content">
+    <form th:action="@{/search/results}" method="post">
+        <input type="text" name="searchTerm" id="searchTerm" />
+<!--        </p>-->
+
+        <input type="submit" value="Search" />
+
+    </form>
+
+    <form method="post" th:action="@{/search/results}">
+        <label for="searchType">Search By:</label>
+        <select id="searchType" name="searchType">
+            <option th:each="column : ${columns}" th:value="${column.key}" th:text="${column.value}"></option>
+        </select>
+        <input type="text" id="searchTerm" name="searchTerm" />
+        <button type="submit">Search</button>
+    </form>
+
+    <hr />
+
+    <table class="job-listing" th:each="jobs : ${jobs}">
+        <tr>
+            <th>Job ID</th>
+            <td th:text="${jobs.id}"></td>
+        </tr>
+        <tr>
+            <th>Employer</th>
+            <td th:text="${jobs.employer}"></td>
+        </tr>
+        <tr>
+            <th>Location</th>
+            <td th:text="${jobs.location}"></td>
+        </tr>
+        <tr>
+            <th>Position Type</th>
+            <td th:text="${jobs.positionType}"></td>
+        </tr>
+        <tr>
+            <th>Skill</th>
+            <td th:text="${jobs.coreCompetency}"></td>
+        </tr>
+    </table>
+
+<!--    <h2>Search Results</h2>-->
+
+<!--        <table class="job-listing" th:each="jobs : ${jobs}">-->
+<!--    <table class="job-listing" th:if="${jobs != null and not #lists.isEmpty(jobs)}">-->
+<!--        <tr>-->
+<!--            <th>Job ID</th>-->
+<!--            <th>Employer</th>-->
+<!--            <th>Location</th>-->
+<!--            <th>Position Type</th>-->
+<!--            <th>Skill</th>-->
+<!--        </tr>-->
+<!--        <tr th:each="jobs : ${jobs}">-->
+<!--            <td th:text="${jobs['id']}"></td>-->
+<!--            <td th:text="${jobs['employer']}"></td>-->
+<!--            <td th:text="${jobs['location']}"></td>-->
+<!--            <td th:text="${jobs['positionType']}"></td>-->
+<!--            <td th:text="${jobs['coreCompetency']}"></td>-->
+<!--        </tr>-->
+<!--    </table>-->
+
+    <p th:if="${jobs != null and #lists.isEmpty(jobs)}">No results found.</p>
+
+</div>
+
+</body>
+</html>
+
+
+
+

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.launchcode.techjobsmvc.TestTaskThree" tests="4" skipped="0" failures="0" errors="0" timestamp="2024-06-07T03:55:19" hostname="Johnnys-MacBook-Pro.local" time="0.012">
+  <properties/>
+  <testcase name="testDisplaySearchResultsMethodExists()" classname="org.launchcode.techjobsmvc.TestTaskThree" time="0.004"/>
+  <testcase name="testDisplaySearchResultsUsesCorrectAnnotation()" classname="org.launchcode.techjobsmvc.TestTaskThree" time="0.003"/>
+  <testcase name="testDisplaySearchResultsHasCorrectParameterNames()" classname="org.launchcode.techjobsmvc.TestTaskThree" time="0.0"/>
+  <testcase name="testDisplaySearchResultsHasCorrectParameterAnnotations()" classname="org.launchcode.techjobsmvc.TestTaskThree" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
